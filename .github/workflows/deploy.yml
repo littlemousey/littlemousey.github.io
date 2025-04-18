@@ -1,0 +1,55 @@
+name: Deploy to Production
+ 
+on:
+  push:
+    branches:
+      - main
+  # schedule: # Run workflow automatically
+  #   - cron: '0 1 * * *' # Runs every day at 1:00 AM (min hour day month)
+  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
+ 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+ 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+ 
+    strategy:
+      matrix:
+        node-version: [20.x]
+ 
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install and Build components 🔧
+        # .nojekyll: do not ignore _ dirs
+        run: |
+          npm ci
+          npm run build
+          touch dist/.nojekyll
+        #     CI: false # true -> fails on warning
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
+ 
+ 
