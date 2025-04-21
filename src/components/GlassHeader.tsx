@@ -1,8 +1,8 @@
-import ThemeToggle from "./ui/theme-toggle";
 import { personalInfo } from "@/lib/data";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import ThemeToggle from "./ui/theme-toggle";
 
 export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function GlassHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {["experience", "skills", "projects", "awards", "education"].map(
+          {["experience", "skills", "education"].map(
             (item, index) => (
               <motion.a
                 key={item}
