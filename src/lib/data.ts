@@ -40,6 +40,15 @@ export const workExperience = [
       "Making governmental institute websites WCAG compliant",
     ],
   },
+  {
+    company: "Blueriq",
+    location: "Den Bosch",
+    position: "Business Engineer",
+    period: "December 2014 - December 2016",
+    achievements: [
+      "Developing business solutions for Volksbank and governmental organization Implementation of Policy with the Aquima/Blueriq platform",
+    ],
+  },
 ];
 
 export const education = [
