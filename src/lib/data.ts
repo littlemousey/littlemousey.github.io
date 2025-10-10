@@ -8,10 +8,21 @@ export const personalInfo = {
 
 export const workExperience = [
   {
+    company: "Nelen & Schuurmans",
+    location: "Utrecht",
+    position: "Frontend developer",
+    period: "August 2025 - Present",
+    achievements: [
+      "Setting up frontend team for knowledge sharing",
+      "Implementing code quality standards",
+      "Improving testing coverage"
+    ],
+  },
+  {
     company: "Chordify",
     location: "Utrecht/Groningen",
     position: "Frontend developer",
-    period: "November 2019 - Present",
+    period: "November 2019 - July 2025",
     achievements: [
       "Designing and implementing a new design system for UI consistency",
       "Building and testing new features and user flows, using responsive layouts",
