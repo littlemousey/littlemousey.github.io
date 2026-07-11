@@ -85,6 +85,63 @@ export const education = [
     ],
   }
 ];
+export const conferences = [
+  {
+    name: 'React Summit',
+    location: 'Amsterdam, Kromhouthal',
+    year: '2026',
+    description: 'Conference about the React ecosystem, modern web development, and the growing impact of AI on it',
+  },
+  {
+    name: 'JSNation',
+    location: 'Amsterdam, Circa Amsterdam',
+    year: '2025',
+    description: 'JavaScript conference focusing on the future of the JS ecosystem',
+  },
+  {
+    name: 'Fronteers',
+    location: 'Utrecht, Pathé Leidsche Rijn',
+    year: '2022',
+    description: 'Conference organized by the Dutch professional association for front-end developers',
+  },
+  {
+    name: 'Frontmania',
+    location: 'Utrecht, Rabobank',
+    year: '2020',
+    description: 'Technology conference dedicated to frontend development',
+  },
+  {
+    name: 'Fronteers',
+    location: 'Amsterdam, Pathé Tuschinski',
+    year: '2019',
+    description: 'Conference organized by the Dutch professional association for front-end developers',
+  },
+  {
+    name: 'Frontmania',
+    location: 'Utrecht, Rabobank',
+    year: '2019',
+    description: 'Technology conference dedicated to frontend development',
+  },
+  {
+    name: 'AmsterdamJS',
+    location: 'Amsterdam, Zuiderkerk',
+    year: '2019',
+    description: 'Conference focusing on JavaScript development',
+  },
+  {
+    name: 'UX Camp Amsterdam',
+    location: 'Amsterdam',
+    year: '2018',
+    description: 'BarCamp where you can share your knowledge, stories, and ideas about User Experience Design.',
+  },
+  {
+    name: 'Fronteers',
+    location: 'Amsterdam, Pathé Tuschinski',
+    year: '2017',
+    description: 'Conference organized by the Dutch professional association for front-end developers',
+  },
+];
+
 export const skills = {
   programmingLanguages: [
     "TypeScript",
