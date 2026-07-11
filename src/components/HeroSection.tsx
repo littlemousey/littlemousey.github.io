@@ -41,7 +41,6 @@ export default function HeroSection() {
               variants={childVariants}
             >
               {personalInfo.name}{" "}
-              <span className="inline-block animate-pulse">✨</span>
             </motion.h1>
 
             <motion.p
