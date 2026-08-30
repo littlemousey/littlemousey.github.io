@@ -1,48 +1,83 @@
-# Astro Starter Kit: Basics
+# littlemousey.github.io
 
-```sh
-npm create astro@latest -- --template basics
-```
+Personal portfolio site of [Ans de Nijs](https://littlemousey.github.io), built with [Astro](https://astro.build) and React, styled with Tailwind CSS and deployed to GitHub Pages.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Tech stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **[Astro](https://astro.build)** — static site generator, renders a single page at build time
+- **[React 19](https://react.dev)** — all sections are React islands, hydrated with `client:only="react"`
+- **[Tailwind CSS 4](https://tailwindcss.com)** — via the `@tailwindcss/vite` plugin (no `tailwind.config.js`; theme lives in `src/styles/global.css`)
+- **[shadcn/ui](https://ui.shadcn.com)** — "new-york" style components in `src/components/ui/`, configured in `components.json`
+- **[Framer Motion](https://motion.dev)** — scroll and entrance animations, wrapped by `MotionWrapper` and `GlassCard`
+- **[lucide-react](https://lucide.dev)** — icons
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── .github/workflows/deploy.yml   # GitHub Pages build & deploy
+├── public/                        # favicon, profile picture
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/
+│   │   ├── ui/                    # shadcn/ui primitives (button, card, glass-card, theme-toggle)
+│   │   ├── GlassHeader.tsx        # sticky nav
+│   │   ├── HeroSection.tsx
+│   │   ├── ExperienceSection.tsx
+│   │   ├── SkillsSection.tsx
+│   │   ├── EducationSection.tsx
+│   │   ├── ConferencesSection.tsx
+│   │   ├── VolunteerSection.tsx
+│   │   ├── ArticlesSection.tsx
+│   │   ├── TimelineItem.tsx       # shared timeline entry
+│   │   ├── MotionWrapper.tsx      # animation helper
+│   │   └── Footer.tsx
+│   ├── layouts/Layout.astro       # HTML shell, fonts, dark-mode script
+│   ├── lib/
+│   │   ├── data.ts                # ← all site content lives here
+│   │   └── utils.ts               # `cn()` class merge helper
+│   ├── pages/index.astro          # the only page; composes the sections
+│   └── styles/global.css          # Tailwind import + theme tokens
+├── astro.config.mjs
+└── components.json                # shadcn/ui config
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Updating the content
 
-## 🧞 Commands
+Everything shown on the site — work experience, education, skills, conferences, volunteer work, articles and contact links — is data in [`src/lib/data.ts`](src/lib/data.ts). Editing that file is usually all that's needed; the components render whatever is exported there:
 
-All commands are run from the root of the project, from a terminal:
+| Export                | Renders in                |
+| :-------------------- | :------------------------ |
+| `personalInfo`        | `HeroSection`, `GlassHeader`, `Footer` |
+| `workExperience`      | `ExperienceSection`       |
+| `education`           | `EducationSection`        |
+| `skills`              | `SkillsSection`           |
+| `conferences`         | `ConferencesSection`      |
+| `volunteerExperiences`| `VolunteerSection`        |
+| `articles`            | `ArticlesSection`         |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+To add a whole new section, create a component in `src/components/`, add its data to `data.ts`, and include it in [`src/pages/index.astro`](src/pages/index.astro) with `client:only="react"`.
 
-## 👀 Want to learn more?
+## Development
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Requires Node.js 22 (the version used by the deploy workflow).
+
+```sh
+npm install     # install dependencies
+npm run dev     # dev server on http://localhost:4321
+npm run build   # production build into ./dist/
+npm run preview # preview the production build locally
+```
+
+Path alias `@/*` maps to `./src/*`.
+
+## Theming
+
+The theme follows the visitor's `prefers-color-scheme` by default and can be switched with the toggle in the header. The choice is stored in `localStorage` and applied by an inline script in [`src/layouts/Layout.astro`](src/layouts/Layout.astro) before paint, so there is no flash of the wrong theme. Colours are CSS custom properties defined in `src/styles/global.css`.
+
+## Deployment
+
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which runs `npm ci && npm run build`, adds a `.nojekyll` file, and publishes `dist/` to GitHub Pages. The workflow can also be run manually from the Actions tab.
+
+## License
+
+[MIT](LICENSE)
