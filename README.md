@@ -2,6 +2,9 @@
 
 Personal portfolio site of [Ans de Nijs](https://littlemousey.github.io), built with [Astro](https://astro.build) and React, styled with Tailwind CSS and deployed to GitHub Pages.
 
+<img width="908" height="906" alt="image" src="https://github.com/user-attachments/assets/9035f0c4-f11b-447e-8903-b9a70787f5cd" />
+
+
 ## Tech stack
 
 - **[Astro](https://astro.build)** — static site generator, renders a single page at build time
