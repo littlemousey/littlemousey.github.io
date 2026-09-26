@@ -1,3 +1,41 @@
+export type WorkExperience = {
+  company: string;
+  description: string;
+  location: string;
+  position: string;
+  period: string;
+  achievements: string[];
+};
+
+export type Education = {
+  institution: string;
+  location: string;
+  degree: string;
+  period: string;
+  achievements: string[];
+};
+
+export type Conference = {
+  name: string;
+  location: string;
+  year: string;
+  description: string;
+};
+
+export type Article = {
+  name: string;
+  description: string;
+  url: string;
+  date: string;
+};
+
+export type VolunteerExperience = {
+  organisation: string;
+  description: string;
+  period: string;
+  url: string;
+};
+
 export const personalInfo = {
   name: "Ans de Nijs",
   location: "Maarssen, the Netherlands",
@@ -6,20 +44,23 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ansdenijs/",
 };
 
-export const workExperience = [
+export const workExperience: WorkExperience[] = [
   {
     company: "Nelen & Schuurmans",
+    description: "Consultancy in water management that uses GIS technology",
     location: "Utrecht",
     position: "Frontend developer",
     period: "August 2025 - Present",
     achievements: [
       "Setting up frontend team for knowledge sharing",
       "Implementing code quality standards",
-      "Improving testing coverage"
+      "Improving testing coverage",
+      "Setting up boundaries and context awareness for AI agents"
     ],
   },
   {
     company: "Chordify",
+    description: "Music tech company building an online music platform and catalog for musicians",
     location: "Utrecht/Groningen",
     position: "Frontend developer",
     period: "November 2019 - July 2025",
@@ -33,6 +74,7 @@ export const workExperience = [
   },
   {
     company: "Frontmen - Frontend Experts",
+    description: "Agency outsourcing frontend developers",
     location: "Utrecht",
     position: "Frontend developer",
     period: "January 2019 - October 2019",
@@ -42,6 +84,7 @@ export const workExperience = [
   },
   {
     company: "Blueriq",
+    description: "Agency outsourcing Blueriq developers to clients",
     location: "Den Bosch",
     position: "Frontend developer",
     period: "January 2017 - January 2019",
@@ -49,10 +92,12 @@ export const workExperience = [
       "Creating the User Interface for Blueriq applications in KnockoutJS and Angular framework for various Dutch governmental institutions",
       "Updating Rijkshuisstijl",
       "Making governmental institute websites WCAG compliant",
+      "Implementing Angular into the NVWA platform"
     ],
   },
   {
     company: "Blueriq",
+    description: "Agency outsourcing Blueriq consultants to clients",
     location: "Den Bosch",
     position: "Business Engineer",
     period: "December 2014 - December 2016",
@@ -62,7 +107,7 @@ export const workExperience = [
   },
 ];
 
-export const education = [
+export const education: Education[] = [
   {
     institution: "University of Amsterdam",
     location: "Amsterdam, the Netherlands",
@@ -85,7 +130,7 @@ export const education = [
     ],
   }
 ];
-export const conferences = [
+export const conferences: Conference[] = [
   {
     name: 'React Summit',
     location: 'Amsterdam, Kromhouthal',
@@ -169,6 +214,7 @@ export const skills = {
     "Vite",
     "Playwright",
     "ESLint",
+    "OpenAPI",
     "Motion",
     "Git/SVN",
     "Storybook",
@@ -179,11 +225,12 @@ export const skills = {
     "Jest/Jasmine",
     "Bootstrap",
     "Visual Studio Code",
-    "Github co-pilot"
+    "Github co-pilot",
+    "Claude code"
   ],
 };
 
-export const articles = [
+export const articles: Article[] = [
   {
     name: 'DIER',
     description: 'Interview adopting lab mice',
@@ -204,7 +251,7 @@ export const articles = [
   },
 ];
 
-export const volunteerExperiences = [
+export const volunteerExperiences: VolunteerExperience[] = [
   {
     organisation: 'World Wildlife Fund',
     description: 'Organizing and preparing educational nature activities for children',

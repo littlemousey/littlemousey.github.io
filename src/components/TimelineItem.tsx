@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 interface TimelineItemProps {
   title: string;
+  description?: string;
   subtitle: string;
   date: string;
   isLast?: boolean;
@@ -13,6 +14,7 @@ interface TimelineItemProps {
 
 export default function TimelineItem({
   title,
+  description,
   subtitle,
   date,
   isLast = false,
@@ -59,6 +61,9 @@ export default function TimelineItem({
           viewport={{ once: true, margin: "-50px" }}
         >
           <h3 className="font-medium">{title}</h3>
+          {description && (
+            <p className="text-sm text-muted-foreground">{description}</p>
+          )}
           <p className="text-sm text-muted-foreground">{subtitle}</p>
           <p className="text-xs text-muted-foreground/70 mb-2">{date}</p>
         </motion.div>

@@ -30,6 +30,7 @@ export default function ExperienceSection() {
             <TimelineItem
               key={job.company + job.period}
               title={`👨‍💻 ${job.position} | ${job.company}`}
+              description={job.description}
               subtitle={`🌍 ${job.location}`}
               date={`📅 ${job.period}`}
               isLast={index === workExperience.length - 1}
